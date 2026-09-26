@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pickle Catalog — Achaar House</title>
+  <meta name="description" content="Browse the full Achaar House pickle catalog. Explore mango, lime, chilli, garlic, amla, mixed vegetable achaar and more. Authentic Indian handcrafted pickles." />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .product-detail-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(42,21,6,0.65);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      backdrop-filter: blur(4px);
+    }
+    .product-detail-modal.open { display: flex; }
+    .modal-inner {
+      background: var(--warm-white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      max-width: 800px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      box-shadow: var(--shadow-xl);
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+    .modal-img { min-height: 360px; }
+    .modal-img img { width: 100%; height: 100%; object-fit: cover; }
+    .modal-body { padding: 36px 32px; }
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 16px;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: #fff;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: var(--shadow-sm);
+      z-index: 10;
+    }
+    .modal-category { font-size:0.72rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--terracotta); margin-bottom:8px; }
+    .modal-name { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:700; color:var(--brown-deep); margin-bottom:14px; }
+    .modal-desc { font-size:0.9rem; color:var(--text-secondary); line-height:1.8; margin-bottom:20px; }
+    .modal-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px; }
+    .modal-tag { padding:4px 12px; border-radius:var(--radius-pill); background:var(--cream-dark); font-size:0.74rem; color:var(--text-secondary); font-weight:500; }
+    .modal-price { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:700; color:var(--terracotta); margin-bottom:8px; }
+    .size-options { display:flex; gap:10px; margin-bottom:16px; }
+    .size-opt { padding:8px 18px; border:2px solid var(--cream-dark); border-radius:var(--radius-pill); background:#fff; font-size:0.84rem; font-weight:500; cursor:pointer; transition:var(--transition); font-family:'Outfit',sans-serif; }
+    .size-opt:hover,.size-opt.active { border-color:var(--terracotta); background:var(--terracotta); color:#fff; }
+    @media(max-width:640px){ .modal-inner{grid-template-columns:1fr;} .modal-img{min-height:220px;} }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L2 8v14h8v-6h4v6h8V8L12 2z"/>
+      </svg>
+    </div>
+    <div class="nav-logo-text">
+      <span class="brand-name">Achaar House</span>
+      <span class="brand-tagline">Est. 1985 · Handcrafted</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="catalog.html" class="active">Catalog</a></li>
+    <li><a href="about.html">Our Story</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-cta"></div>
+  <div class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <span class="mobile-nav-close" id="mobileClose">✕</span>
+  <a href="index.html">Home</a>
+  <a href="catalog.html">Catalog</a>
+  <a href="about.html">Our Story</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="page-header">
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="sep">›</span>
+    <span>Catalog</span>
+  </div>
+  <h1>Our <em style="font-style:italic; color:var(--terracotta);">Pickle Catalog</em></h1>
+  <p>Explore 40+ handcrafted pickle varieties — all made from family recipes, natural ingredients, and a whole lot of love.</p>
+</div>
+
+<!-- ===== CATALOG SECTION ===== -->
+<section class="section-pad">
+  <div class="filter-bar" id="filterBar">
+    <button class="filter-btn active" data-filter="all" onclick="filterProducts('all', this)">All Varieties</button>
+    <button class="filter-btn" data-filter="fruit" onclick="filterProducts('fruit', this)">🥭 Fruit</button>
+    <button class="filter-btn" data-filter="chilli" onclick="filterProducts('chilli', this)">🌶️ Chilli</button>
+    <button class="filter-btn" data-filter="vegetable" onclick="filterProducts('vegetable', this)">🥕 Vegetable</button>
+    <button class="filter-btn" data-filter="mixed" onclick="filterProducts('mixed', this)">🫙 Mixed</button>
+    <button class="filter-btn" data-filter="special" onclick="filterProducts('special', this)">✨ Special</button>
+  </div>
+
+  <div class="products-grid" id="productsGrid">
+
+    <!-- 1 -->
+    <div class="product-card fade-up" data-category="fruit" onclick="openModal('mango')">
+      <div class="product-card-img">
+        <img src="images/mango_pickle.jpg" alt="Classic Mango Pickle" loading="lazy" />
+        <span class="product-badge">Bestseller</span>
+      </div>
+      <div class="product-card-body">
+        <div class="product-category">Fruit Pickle</div>
+        <div class="product-name">Classic Mango</div>
+        <div class="spice-meter">
+          <div class="spice-dot active"></div><div class="spice-dot active"></div><div class="spice-dot active"></div><div class="spice-dot"></div><div class="spice-dot"></div>
+        </div>
+        <div class="product-desc">Raw aam, mustard seeds &amp; kalonji in cold-pressed mustard oil.</div>
+        <div class="product-footer">
+          <div class="product-price">₹249 <span>/ 500g</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="product-card fade-up" data-category="fruit" onclick="openModal('lime')">
+      <div class="product-card-img">
+        <img src="images/lime_pickle.jpg" alt="Lime Pickle" loading="lazy" />
+      </div>
+      <div class="product-card-body">
+        <div class="product-category">Fruit Pickle</div>
+        <div class="product-name">Lime Achaar</div>
+        <div class="spice-meter">
+          <div class="spice-dot active"></div><div class="spice-dot active"></div><div class="spice-dot"></div><div class="spice-dot"></div><div class="spice-dot"></div>
+        </div>
+        <div class="product-desc">Tangy whole limes with fenugreek seeds, aged in brine &amp; oil.</div>
+        <div class="product-footer">
+          <div class="product-price">₹229 <span>/ 500g</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="product-card fade-up" data-category="fruit" onclick="openModal('amla')">
+      <div class="product-card-img">
+        <img src="images/amla_pickle.jpg" alt="Amla Pickle" loading="lazy" />
+        <span class="product-badge new">Seasonal</span>
+      </div>
+      <div class="product-card-body">
+        <div class="product-category">Fruit Pickle</div>
+        <div class="product-name">Amla Achaar</div>
+        <div class="spice-meter">
+          <div class="spice-dot active"></div><div class="spice-dot"></div><div class="spice-dot"></div><div class="spice-dot"></div><div class="spice-dot"></div>
+        </div>
+        <div class="product-desc">Indian gooseberry with black salt, cumin &amp; red chilli — rich in Vitamin C.</div>
+        <div class="product-footer">
+          <div class="product-price">₹239 <span>/ 400g</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="product-card fade-up" data-category="chilli" onclick="openModal('chilli')">
+      <div class="product-card-img">
+        <img src="images/chilli_pickle.jpg" alt="Red Chilli Pickle" loading="lazy" />
+        <span class="product-badge hot">Fiery</span>
+      </div>
+      <div class="product-card-body">
+        <div class="product-category">Chilli Pickle</div>
+        <div class="product-name">Red Chilli</div>
+        <div class="spice-meter">
+          <div class="spice-dot active hot"></div><div class="spice-dot active hot"></div><div class="spice-dot active hot"></div><div class="spice-dot active hot"></div><div class="spice-dot active hot"></div>
+        </div>
+        <div class="product-desc">Whole Byadgi chillies, slow-marinated with garlic &amp; jaggery.</div>
+        <div class="product-footer">
+          <div class="product-price">₹219 <span>/ 400g</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="product-card fade-up" data-category="vegetable" onclick="openModal('garlic')">
+      <div class="product-card-img">
+        <img src="images/garlic_pickle.jpg" alt="Garlic Pickle" loading="lazy" />
+        <span class="product-badge new">New Season</span>
+      </div>
+      <div class="product-card-body">
+        <div class="product-category">Vegetable Pickle</div>
+        <div class="product-name">Whole Garlic</div>
+        <div class="spice-meter">
+          <div class="spice-dot active"></div><div class="spice-dot active"></div><div class="spice-dot"></div><div class="spice-dot"></div><div class="spice-dot"></div>
+        </div>
+        <div class="product-desc">Young garlic cloves aged in turmeric, chilli &amp; achari masala.</div>
+        <div class="product-footer">
+          <div class="product-price">₹229 <span>/ 400g</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="product-card fade-up" data-category="mixed" onclick="openModal('mixed')">
+      <div class="product-card-img">
+        <img src="images/mixed_veg_pickle.jpg" alt="Mixed Vegetable Pickle" loading="lazy" />
+      </div>
+      <div class="product-card-body">
+        <div class="product-category">Mixed Pickle</div>
+        <div class="product-name">Mixed Vegetable</div>
+        <div class="spice-meter">
+          <div class="spice-dot active"></div><div class="spice-dot active"></div><div class="spice-dot active"></div><div class="spice-dot"></div><div class="spice-dot"></div>
+        </div>
+        <div class="product-desc">Seven seasonal vegetables in rich achari masala — carrot, cauliflower &amp; lotus stem.</div>
+        <div class="product-footer">
+          <div class="product-price">₹199 <span>/ 500g</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="product-card fade-up" data-category="fruit" onclick="openModal('sweetmango')">
+      <div class="product-card-img">
+        <img src="images/mango_pickle.jpg" alt="Sweet Mango Pickle" loading="lazy" />
+      </div>
+      <div class="product-card-body">
+        <div class="product-category">Fruit Pickle</div>
+        <div class="product-name">Sweet Mango</div>
+        <div class="spice-meter">
+          <div class="spice-dot active"></div><div class="spice-dot"></div><div class="spice-dot"></div><div class="spice-dot"></div><div class="spice-dot"></div>
+        </div>
+        <div class="product-desc">Juicy Alphonso mango chunks with jaggery, saffron &amp; fennel seeds.</div>
+        <div class="product-footer">
+          <div class="product-price">₹279 <span>/ 400g</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="product-card fade-up" data-category="chilli" onclick="openModal('greenchilli')">
+      <div class="product-card-img">
+        <img src="images/lime_pickle.jpg" alt="Green Chilli Pickle" loading="lazy" />
+      </div>
+      <div class="product-card-body">
+        <div class="product-category">Chilli Pickle</div>
+        <div class="product-name">Green Chilli</div>
+        <div class="spice-meter">
+          <div class="spice-dot active hot"></div><div class="spice-dot active hot"></div><div class="spice-dot active hot"></div><div class="spice-dot active hot"></div><div class="spice-dot"></div>
+        </div>
+        <div class="product-desc">Fresh hari mirch stuffed with fennel, coriander &amp; mustard filling.</div>
+        <div class="product-footer">
+          <div class="product-price">₹209 <span>/ 350g</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="product-card fade-up" data-category="special" onclick="openModal('gift')">
+      <div class="product-card-img">
+        <img src="images/catalog_group.png" alt="Gift Hamper" loading="lazy" />
+        <span class="product-badge" style="background:var(--gold);">Gift</span>
+      </div>
+      <div class="product-card-body">
+        <div class="product-category">Special Edition</div>
+        <div class="product-name">Festive Hamper</div>
+        <div class="spice-meter">
+          <div class="spice-dot active"></div><div class="spice-dot active"></div><div class="spice-dot active"></div><div class="spice-dot active"></div><div class="spice-dot"></div>
+        </div>
+        <div class="product-desc">Curated set of 6 bestseller jars in a hand-crafted gift box. Perfect for gifting.</div>
+        <div class="product-footer">
+          <div class="product-price">₹1,299 <span>/ 6 jars</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== PRODUCT DETAIL MODAL ===== -->
+<div class="product-detail-modal" id="productModal" onclick="closeModalOutside(event)">
+  <div class="modal-inner" id="modalInner">
+    <div class="modal-img" id="modalImg">
+      <img id="modalImage" src="" alt="Product" />
+    </div>
+    <div class="modal-body">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-category" id="modalCategory"></div>
+      <div class="modal-name" id="modalName"></div>
+      <div class="spice-meter" id="modalSpice"></div>
+      <div class="modal-desc" id="modalDesc"></div>
+      <div class="modal-tags" id="modalTags"></div>
+      <div style="margin-bottom:16px;">
+        <div style="font-size:0.78rem; font-weight:700; color:var(--text-secondary); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:10px;">Select Size</div>
+        <div class="size-options">
+          <button class="size-opt active" onclick="selectSize(this, 1)">250g</button>
+          <button class="size-opt" onclick="selectSize(this, 1.6)">500g</button>
+          <button class="size-opt" onclick="selectSize(this, 2.9)">1 kg</button>
+        </div>
+      </div>
+      <div class="modal-price" id="modalPrice"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-logo">
+        <div class="footer-brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#F8F1E9" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 8v14h8v-6h4v6h8V8L12 2z"/>
+          </svg>
+        </div>
+        <span class="footer-brand-name">Achaar House</span>
+      </div>
+      <p class="footer-brand-desc">Preserving India's finest pickle traditions since 1985. Handcrafted in Jodhpur with love.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Catalog</h4>
+      <ul class="footer-links">
+        <li><a href="catalog.html">All Pickles</a></li>
+        <li><a href="catalog.html">Fruit Pickles</a></li>
+        <li><a href="catalog.html">Chilli Pickles</a></li>
+        <li><a href="catalog.html">Vegetable Pickles</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul class="footer-links">
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul class="footer-links">
+        <li><a href="contact.html">Help</a></li>
+        <li><a href="#">Shipping</a></li>
+        <li><a href="#">Returns</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Achaar House. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobileNav').classList.add('open');
+  });
+  document.getElementById('mobileClose').addEventListener('click', () => {
+    document.getElementById('mobileNav').classList.remove('open');
+  });
+
+  // --- Filter ---
+  function filterProducts(category, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.style.display = (category === 'all' || card.dataset.category === category) ? '' : 'none';
+    });
+  }
+
+  // --- Modal data ---
+  const products = {
+    mango:      { name:'Classic Mango',     category:'Fruit Pickle',     img:'images/mango_pickle.jpg',    desc:'Raw aam, mustard seeds & kalonji in cold-pressed mustard oil. A timeless summer classic loved across generations.',                     price:249,  tags:['Vegetarian','Gluten Free','No Preservatives','Mustard Oil'] },
+    lime:       { name:'Lime Achaar',       category:'Fruit Pickle',     img:'images/lime_pickle.jpg',     desc:'Tangy whole limes with fenugreek seeds, sun-dried and aged in a brine of rock salt and mustard oil.',                                  price:229,  tags:['Vegetarian','Gluten Free','Probiotic','Tangy'] },
+    amla:       { name:'Amla Achaar',       category:'Fruit Pickle',     img:'images/amla_pickle.jpg',     desc:'Indian gooseberry with black salt, cumin & red chilli — rich in Vitamin C and deeply nourishing.',                                     price:239,  tags:['Vegetarian','Vitamin C Rich','Seasonal','Light Spice'] },
+    chilli:     { name:'Red Chilli',        category:'Chilli Pickle',    img:'images/chilli_pickle.jpg',   desc:'Whole Byadgi chillies slow-marinated with garlic, jaggery & mustard oil for 21 days. Fiery and bold.',                                 price:219,  tags:['Vegetarian','Very Spicy','No Preservatives','Slow-Aged'] },
+    garlic:     { name:'Whole Garlic',      category:'Vegetable Pickle', img:'images/garlic_pickle.jpg',   desc:'Young garlic cloves aged in a blend of turmeric, chilli & achari masala. Deeply aromatic and complex.',                                price:229,  tags:['Vegetarian','Gluten Free','Aromatic','New Season'] },
+    mixed:      { name:'Mixed Vegetable',   category:'Mixed Pickle',     img:'images/mixed_veg_pickle.jpg',desc:'Seven seasonal vegetables — carrot, cauliflower, lotus stem, raw mango, turnip, green chilli & ginger — in punchy masala.',            price:199,  tags:['Vegetarian','7 Vegetables','Gluten Free','All-Season'] },
+    sweetmango: { name:'Sweet Mango',       category:'Fruit Pickle',     img:'images/mango_pickle.jpg',    desc:'Juicy Alphonso mango chunks with jaggery, saffron & fennel seeds. Mildly spiced, perfect for children.',                                price:279,  tags:['Vegetarian','Mild','Sweet','Alphonso Mango'] },
+    greenchilli:{ name:'Green Chilli',      category:'Chilli Pickle',    img:'images/lime_pickle.jpg',     desc:'Fresh hari mirch stuffed with fennel, coriander & mustard filling, marinated in mustard oil.',                                          price:209,  tags:['Vegetarian','Very Spicy','Stuffed','Traditional'] },
+    gift:       { name:'Festive Hamper',    category:'Special Edition',  img:'images/catalog_group.png',   desc:'Curated set of 6 bestseller jars — Classic Mango, Red Chilli, Garlic, Lime, Amla & Mixed Veg — in a hand-crafted gift box.',           price:1299, tags:['Gift Set','6 Jars','Festive','Free Delivery'] },
+  };
+  let basePrice = 0;
+
+  function openModal(id) {
+    const p = products[id];
+    if (!p) return;
+    document.getElementById('modalImage').src = p.img;
+    document.getElementById('modalCategory').textContent = p.category;
+    document.getElementById('modalName').textContent = p.name;
+    document.getElementById('modalDesc').textContent = p.desc;
+    document.getElementById('modalPrice').textContent = '₹' + p.price;
+    basePrice = p.price;
+    document.getElementById('modalTags').innerHTML = p.tags.map(t => `<span class="modal-tag">${t}</span>`).join('');
+    document.querySelectorAll('.size-opt').forEach((b, i) => b.classList.toggle('active', i === 0));
+    document.getElementById('productModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('productModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function closeModalOutside(e) {
+    if (e.target === document.getElementById('productModal')) closeModal();
+  }
+
+  function selectSize(btn, multiplier) {
+    document.querySelectorAll('.size-opt').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('modalPrice').textContent = '₹' + Math.round(basePrice * multiplier);
+  }
+
+  // --- Scroll animations ---
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

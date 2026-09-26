@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — Achaar House</title>
+  <meta name="description" content="Get in touch with Achaar House for orders, wholesale enquiries, gifting, or just a pickle conversation. We'd love to hear from you." />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .map-placeholder {
+      height: 320px;
+      background: linear-gradient(135deg, var(--cream) 0%, var(--terracotta-pale) 100%);
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--text-muted);
+      font-size: 2.5rem;
+      margin-top: 28px;
+      border: 2px dashed var(--terracotta-pale);
+    }
+    .map-placeholder p { font-size: 0.88rem; font-family: 'Outfit', sans-serif; }
+    .faq-item {
+      border-bottom: 1px solid var(--cream-dark);
+      padding: 20px 0;
+    }
+    .faq-question {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--brown-deep);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-question .faq-icon {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--terracotta-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      color: var(--terracotta);
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+    .faq-answer {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+    .faq-item.open .faq-answer { max-height: 200px; padding-top: 12px; }
+    .faq-item.open .faq-icon { background: var(--terracotta); color: #fff; transform: rotate(45deg); }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L2 8v14h8v-6h4v6h8V8L12 2z"/>
+      </svg>
+    </div>
+    <div class="nav-logo-text">
+      <span class="brand-name">Achaar House</span>
+      <span class="brand-tagline">Est. 1985 · Handcrafted</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="catalog.html">Catalog</a></li>
+    <li><a href="about.html">Our Story</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <div class="nav-cta"></div>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <span class="mobile-nav-close" id="mobileClose">✕</span>
+  <a href="index.html">Home</a>
+  <a href="catalog.html">Catalog</a>
+  <a href="about.html">Our Story</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- ===== PAGE HEADER ===== -->
+<div class="page-header">
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="sep">›</span>
+    <span>Contact</span>
+  </div>
+  <h1>Let's <em style="font-style:italic; color:var(--terracotta);">Talk Pickles</em></h1>
+  <p>Whether it's a bulk order, a gifting query, or just a love for achaar — we're here for it.</p>
+</div>
+
+<!-- ===== CONTACT MAIN ===== -->
+<section class="section-pad">
+  <div class="contact-grid">
+
+    <!-- Left: Info Card -->
+    <div>
+      <div class="contact-info-card fade-up">
+        <h3>Reach Us Anytime</h3>
+        <p>We respond to all queries within 24 hours. For urgent orders, call us directly.</p>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📍</div>
+          <div class="contact-detail-text">
+            <h4>Visit Our Kitchen</h4>
+            <p>14, Sardar Market Lane, Old City, Jodhpur — 342001, Rajasthan, India</p>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📞</div>
+          <div class="contact-detail-text">
+            <h4>Call / WhatsApp</h4>
+            <p>+91 98290 45678</p>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">✉️</div>
+          <div class="contact-detail-text">
+            <h4>Email Us</h4>
+            <p>hello@achaarhouse.in</p>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">🕐</div>
+          <div class="contact-detail-text">
+            <h4>Working Hours</h4>
+            <p>Monday – Saturday: 9 AM – 7 PM IST<br />Sunday: 10 AM – 2 PM</p>
+          </div>
+        </div>
+
+        <div class="map-placeholder">
+          <span>🗺️</span>
+          <p>Jodhpur, Rajasthan, India</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Form -->
+    <div class="contact-form fade-up">
+      <h3>Send Us a <em style="font-style:italic; color:var(--terracotta);">Message</em></h3>
+
+      <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:28px;">
+        <button class="filter-btn active" id="typeGeneral" onclick="selectInquiry('general', this)">General</button>
+        <button class="filter-btn" id="typeOrder" onclick="selectInquiry('order', this)">Order Help</button>
+        <button class="filter-btn" id="typeWholesale" onclick="selectInquiry('wholesale', this)">Wholesale</button>
+        <button class="filter-btn" id="typeGift" onclick="selectInquiry('gift', this)">Gifting</button>
+      </div>
+
+      <form id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" class="form-control" placeholder="Riya" required />
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" class="form-control" placeholder="Sharma" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" class="form-control" placeholder="riya@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" class="form-control" placeholder="+91 98765 43210" />
+          </div>
+        </div>
+        <div class="form-group" id="orderFieldGroup" style="display:none;">
+          <label for="orderNumber">Order ID (if applicable)</label>
+          <input type="text" id="orderNumber" class="form-control" placeholder="AH-2026-XXXXX" />
+        </div>
+        <div class="form-group" id="wholesaleFieldGroup" style="display:none;">
+          <label for="businessName">Business / Store Name</label>
+          <input type="text" id="businessName" class="form-control" placeholder="Your store or restaurant name" />
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" class="form-control" placeholder="What would you like to discuss?" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Your Message</label>
+          <textarea id="message" class="form-control" rows="5" placeholder="Tell us more — we love hearing from pickle fans…" required></textarea>
+        </div>
+        <button type="submit" class="btn-primary" id="submitBtn" style="width:100%; justify-content:center; padding:15px;">Send Message →</button>
+      </form>
+
+      <!-- Success State -->
+      <div id="successMsg" style="display:none; text-align:center; padding:40px 20px;">
+        <div style="font-size:3rem; margin-bottom:16px;">✅</div>
+        <h3 style="font-family:'Cormorant Garamond',serif; color:var(--brown-deep); margin-bottom:10px; font-size:1.8rem;">Message Received!</h3>
+        <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.7;">Thank you for reaching out. Our team will get back to you within 24 hours. Meanwhile, follow us for pickle updates! 🥒</p>
+        <button class="btn-secondary" style="margin-top:24px;" onclick="resetForm()">Send Another Message</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section-pad" style="background:var(--cream);">
+  <div style="max-width:760px; margin:0 auto;">
+    <div class="section-header">
+      <div class="section-eyebrow">Frequently Asked</div>
+      <h2 class="section-title">Common <em>Questions</em></h2>
+    </div>
+
+    <div class="faq-item fade-up">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        Do you ship outside India?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">Currently we ship domestically across all 500+ cities in India via reputed courier partners. We are working on international shipping for NRI customers — sign up for our newsletter to be notified when it launches!</div>
+    </div>
+
+    <div class="faq-item fade-up">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        What is the shelf life of Achaar House pickles?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">All our pickles have a shelf life of 12–18 months when stored in a cool, dry place. Once opened, refrigerate and consume within 3–4 months. Always use a clean, dry spoon to maintain freshness.</div>
+    </div>
+
+    <div class="faq-item fade-up">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        Can I place a bulk or wholesale order?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">Yes! We supply to restaurants, hotels, grocery chains, and corporate gifting clients. Wholesale orders (minimum 50 jars) receive special pricing and priority dispatch. Select "Wholesale" in our contact form above or call us directly.</div>
+    </div>
+
+    <div class="faq-item fade-up">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        Are your pickles made with artificial preservatives?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">Absolutely not. Our preservation method is entirely traditional — salt, mustard oil, acidity from the fruits/vegetables, and sun-curing. No artificial preservatives, no artificial colours, no synthetic flavours — ever.</div>
+    </div>
+
+    <div class="faq-item fade-up">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        Do you offer customised corporate or wedding hampers?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">We love custom hampers! You can choose specific pickle varieties, select packaging style (cloth bag, wooden crate, or premium gift box), and even add a personalised note card. Contact us at least 7 days in advance for custom orders.</div>
+    </div>
+
+    <div class="faq-item fade-up">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        What oil is used in Achaar House pickles?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">We exclusively use cold-pressed kachi ghani mustard oil, sourced from traditional oil mills in Rajasthan. It is the backbone of authentic North Indian achaar flavour and aroma — and has been our singular choice since 1985.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-logo">
+        <div class="footer-brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#F8F1E9"><path d="M12 2L2 8v14h8v-6h4v6h8V8L12 2z"/></svg>
+        </div>
+        <span class="footer-brand-name">Achaar House</span>
+      </div>
+      <p class="footer-brand-desc">Preserving India's finest pickle traditions since 1985. Handcrafted in Jodhpur with love.</p>
+      <div class="social-links">
+        <a href="#" class="social-link" aria-label="Instagram">📷</a>
+        <a href="#" class="social-link" aria-label="Facebook">📘</a>
+        <a href="#" class="social-link" aria-label="YouTube">▶️</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Catalog</h4>
+      <ul class="footer-links">
+        <li><a href="catalog.html">All Pickles</a></li>
+        <li><a href="catalog.html">Gift Hampers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul class="footer-links">
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul class="footer-links">
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Returns</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Achaar House. All rights reserved. Made with ❤️ in Jodhpur.</span></div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
+  document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileNav').classList.add('open'));
+  document.getElementById('mobileClose').addEventListener('click', () => document.getElementById('mobileNav').classList.remove('open'));
+
+  // Inquiry type selector
+  function selectInquiry(type, btn) {
+    document.querySelectorAll('#contactForm .filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('orderFieldGroup').style.display = type === 'order' ? 'block' : 'none';
+    document.getElementById('wholesaleFieldGroup').style.display = type === 'wholesale' ? 'block' : 'none';
+  }
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    setTimeout(() => {
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    }, 1200);
+  }
+
+  function resetForm() {
+    document.getElementById('contactForm').reset();
+    document.getElementById('contactForm').style.display = 'block';
+    document.getElementById('successMsg').style.display = 'none';
+    document.getElementById('submitBtn').textContent = 'Send Message →';
+    document.getElementById('submitBtn').disabled = false;
+  }
+
+  // FAQ accordion
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

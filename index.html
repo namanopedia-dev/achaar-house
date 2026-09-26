@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Achaar House — Handcrafted Indian Pickles Since 1985</title>
+  <meta name="description" content="Achaar House brings you authentic, handcrafted Indian pickles made from traditional family recipes. Explore our full catalog of premium achaar – mango, lime, chilli, garlic and more." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L2 8v14h8v-6h4v6h8V8L12 2z"/>
+      </svg>
+    </div>
+    <div class="nav-logo-text">
+      <span class="brand-name">Achaar House</span>
+      <span class="brand-tagline">Est. 1985 · Handcrafted</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="catalog.html">Catalog</a></li>
+    <li><a href="about.html">Our Story</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-cta">
+  </div>
+  <div class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <span class="mobile-nav-close" id="mobileClose">✕</span>
+  <a href="index.html">Home</a>
+  <a href="catalog.html">Catalog</a>
+  <a href="about.html">Our Story</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✦ Authentically Indian · Artisanally Crafted</div>
+    <h1>Every Jar Holds a<br /><em>Grandmother's Secret</em></h1>
+    <p class="hero-desc">From sun-soaked mustard fields to your dining table — Achaar House preserves the bold, vibrant flavours of India's finest handcrafted pickles, one jar at a time.</p>
+    <div class="hero-actions">
+      <a href="catalog.html" class="btn-primary" style="padding:14px 32px; font-size:0.95rem;">Explore Catalog →</a>
+      <a href="about.html" class="btn-ghost" style="padding:14px 32px; font-size:0.95rem;">Our Story</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-number">40+</div>
+      <div class="stat-label">Varieties</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">38k+</div>
+      <div class="stat-label">Happy Homes</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">1985</div>
+      <div class="stat-label">Est. Since</div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- ===== FEATURES TICKER ===== -->
+<div class="features-strip">
+  <div class="features-ticker" id="ticker">
+    <span>No Artificial Preservatives</span>
+    <span>100% Cold-Pressed Mustard Oil</span>
+    <span>Traditional Mitti Haandi Recipe</span>
+    <span>Sun-Dried for 21 Days</span>
+    <span>Hand-Packed with Love</span>
+    <span>Free Delivery on ₹499+</span>
+    <span>No Artificial Preservatives</span>
+    <span>100% Cold-Pressed Mustard Oil</span>
+    <span>Traditional Mitti Haandi Recipe</span>
+    <span>Sun-Dried for 21 Days</span>
+    <span>Hand-Packed with Love</span>
+    <span>Free Delivery on ₹499+</span>
+  </div>
+</div>
+
+<!-- ===== BESTSELLERS ===== -->
+<section class="section-pad" id="bestsellers">
+  <div class="section-header">
+    <div class="section-eyebrow">Our Bestsellers</div>
+    <h2 class="section-title">Flavours That <em>Never Fade</em></h2>
+    <p class="section-subtitle">Handpicked favourites — the jars our customers keep coming back for, season after season.</p>
+  </div>
+  <div class="products-grid">
+
+    <!-- Card 1 -->
+    <div class="product-card fade-up" onclick="window.location='catalog.html'">
+      <div class="product-card-img">
+        <img src="images/mango_pickle.jpg" alt="Classic Mango Pickle" loading="lazy" />
+        <span class="product-badge">Bestseller</span>
+      </div>
+      <div class="product-card-body">
+        <div class="product-category">Fruit Pickle</div>
+        <div class="product-name">Classic Mango</div>
+        <div class="spice-meter">
+          <div class="spice-dot active"></div>
+          <div class="spice-dot active"></div>
+          <div class="spice-dot active"></div>
+          <div class="spice-dot"></div>
+          <div class="spice-dot"></div>
+        </div>
+        <div class="product-desc">Raw aam, mustard seeds & kalonji in cold-pressed mustard oil. A timeless summer classic.</div>
+        <div class="product-footer">
+          <div class="product-price">₹249 <span>/ 500g</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="product-card fade-up" onclick="window.location='catalog.html'">
+      <div class="product-card-img">
+        <img src="images/chilli_pickle.jpg" alt="Red Chilli Pickle" loading="lazy" />
+        <span class="product-badge hot">Fiery Hot</span>
+      </div>
+      <div class="product-card-body">
+        <div class="product-category">Chilli Pickle</div>
+        <div class="product-name">Red Chilli</div>
+        <div class="spice-meter">
+          <div class="spice-dot active hot"></div>
+          <div class="spice-dot active hot"></div>
+          <div class="spice-dot active hot"></div>
+          <div class="spice-dot active hot"></div>
+          <div class="spice-dot active hot"></div>
+        </div>
+        <div class="product-desc">Whole Byadgi chillies slow-marinated with garlic, jaggery & mustard oil for 21 days.</div>
+        <div class="product-footer">
+          <div class="product-price">₹219 <span>/ 400g</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="product-card fade-up" onclick="window.location='catalog.html'">
+      <div class="product-card-img">
+        <img src="images/garlic_pickle.jpg" alt="Garlic Pickle" loading="lazy" />
+        <span class="product-badge new">New Season</span>
+      </div>
+      <div class="product-card-body">
+        <div class="product-category">Vegetable Pickle</div>
+        <div class="product-name">Whole Garlic</div>
+        <div class="spice-meter">
+          <div class="spice-dot active"></div>
+          <div class="spice-dot active"></div>
+          <div class="spice-dot"></div>
+          <div class="spice-dot"></div>
+          <div class="spice-dot"></div>
+        </div>
+        <div class="product-desc">Young garlic cloves aged in a blend of turmeric, chilli & achari masala. Deeply aromatic.</div>
+        <div class="product-footer">
+          <div class="product-price">₹229 <span>/ 400g</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="product-card fade-up" onclick="window.location='catalog.html'">
+      <div class="product-card-img">
+        <img src="images/mixed_veg_pickle.jpg" alt="Mixed Vegetable Pickle" loading="lazy" />
+      </div>
+      <div class="product-card-body">
+        <div class="product-category">Mixed Pickle</div>
+        <div class="product-name">Mixed Vegetable</div>
+        <div class="spice-meter">
+          <div class="spice-dot active"></div>
+          <div class="spice-dot active"></div>
+          <div class="spice-dot active"></div>
+          <div class="spice-dot"></div>
+          <div class="spice-dot"></div>
+        </div>
+        <div class="product-desc">Seven seasonal vegetables — carrot, cauliflower, lotus stem & more — in punchy masala.</div>
+        <div class="product-footer">
+          <div class="product-price">₹199 <span>/ 500g</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div style="text-align:center; margin-top:52px;">
+    <a href="catalog.html" class="btn-secondary" style="padding:14px 40px; font-size:0.95rem;">View Full Catalog →</a>
+  </div>
+</section>
+
+<!-- ===== CATEGORIES ===== -->
+<section class="section-pad" style="background:var(--cream); padding-top:60px;">
+  <div class="section-header">
+    <div class="section-eyebrow">Browse By Type</div>
+    <h2 class="section-title">Find Your <em>Perfect Pickle</em></h2>
+  </div>
+  <div class="categories-grid">
+    <div class="cat-card fade-up">
+      <img src="images/catalog_group.png" alt="All Pickles" />
+      <div class="cat-overlay"></div>
+      <div class="cat-label">
+        <h3>The Full Collection</h3>
+        <span>40+ handcrafted varieties</span>
+      </div>
+    </div>
+    <div class="cat-card fade-up">
+      <img src="images/mango_pickle.jpg" alt="Fruit Pickles" />
+      <div class="cat-overlay"></div>
+      <div class="cat-label">
+        <h3>Fruit Pickles</h3>
+        <span>Mango, Amla, Lime</span>
+      </div>
+    </div>
+    <div class="cat-card fade-up">
+      <img src="images/chilli_pickle.jpg" alt="Chilli Pickles" />
+      <div class="cat-overlay"></div>
+      <div class="cat-label">
+        <h3>Chilli Pickles</h3>
+        <span>Red, Green & Stuffed</span>
+      </div>
+    </div>
+    <div class="cat-card fade-up">
+      <img src="images/garlic_pickle.jpg" alt="Vegetable Pickles" />
+      <div class="cat-overlay"></div>
+      <div class="cat-label">
+        <h3>Vegetable Pickles</h3>
+        <span>Garlic, Ginger & More</span>
+      </div>
+    </div>
+    <div class="cat-card fade-up">
+      <img src="images/mixed_veg_pickle.jpg" alt="Mixed Pickles" />
+      <div class="cat-overlay"></div>
+      <div class="cat-label">
+        <h3>Mixed Blends</h3>
+        <span>7-veg, Avakaya & More</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STORY / ABOUT ===== -->
+<section class="section-pad">
+  <div class="story-grid">
+    <div class="story-img-wrap">
+      <img src="images/about_section.jpg" alt="Achaar House kitchen" class="story-img-main" />
+      <img src="images/catalog_group.png" alt="Achaar House jars" class="story-img-accent" />
+      <div class="story-img-badge">
+        <div class="badge-number">38</div>
+        <div class="badge-text">Years of<br />Tradition</div>
+      </div>
+    </div>
+    <div class="story-content">
+      <div class="section-header" style="text-align:left; margin-bottom:20px;">
+        <div class="section-eyebrow">Our Heritage</div>
+        <h2 class="section-title">Born in a <em>Rajasthani Kitchen</em></h2>
+      </div>
+      <p class="story-text">In 1985, our founder Smt. Indira Sharma began making achaar in her courtyard in Jodhpur — using her mother's handwritten recipes, cold-pressed mustard oil, and sun-kissed produce from the local sabzi mandi.</p>
+      <p class="story-text">What started as jars gifted to neighbours soon became a beloved brand. Today, Achaar House ships across India, but every recipe, every spice blend, every batch still carries the soul of that courtyard kitchen.</p>
+      <div class="story-values">
+        <div class="story-value">
+          <div class="story-value-icon">🌿</div>
+          <div class="story-value-text">
+            <h4>100% Natural</h4>
+            <p>No preservatives, no artificial colours — just pure ingredients.</p>
+          </div>
+        </div>
+        <div class="story-value">
+          <div class="story-value-icon">☀️</div>
+          <div class="story-value-text">
+            <h4>Sun-Cured</h4>
+            <p>21 days of slow sun-curing for deep, complex flavour.</p>
+          </div>
+        </div>
+        <div class="story-value">
+          <div class="story-value-icon">🏺</div>
+          <div class="story-value-text">
+            <h4>Clay Pot Aged</h4>
+            <p>Traditional mitti haandi ageing for authentic taste.</p>
+          </div>
+        </div>
+        <div class="story-value">
+          <div class="story-value-icon">🤲</div>
+          <div class="story-value-text">
+            <h4>Hand-Crafted</h4>
+            <p>Made in small batches with artisan care and attention.</p>
+          </div>
+        </div>
+      </div>
+      <a href="about.html" class="btn-primary" style="padding:14px 32px;">Read Our Full Story →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="section-pad testimonials-bg">
+  <div class="section-header section-header-light">
+    <div class="section-eyebrow">Loved Across India</div>
+    <h2 class="section-title" style="color:#fff;">What Our <em style="color:var(--gold-light);">Customers</em> Say</h2>
+    <p class="section-subtitle" style="color:rgba(255,255,255,0.65);">Over 38,000 happy homes can't be wrong. Real words from real pickle lovers.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card fade-up">
+      <div class="testimonial-stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <p class="testimonial-text">"The Classic Mango is exactly how my nani used to make it. I've been ordering every month for two years. Nothing compares to this level of authenticity."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">P</div>
+        <div class="author-info">
+          <h4>Priya Mehta</h4>
+          <span>Mumbai · Verified Buyer</span>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card fade-up">
+      <div class="testimonial-stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <p class="testimonial-text">"I gifted a hamper to my colleagues in the UK. They were absolutely floored — the packaging is gorgeous and every single jar was perfect. Achaar House is a gem."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">R</div>
+        <div class="author-info">
+          <h4>Rohan Kapoor</h4>
+          <span>Delhi · Verified Buyer</span>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card fade-up">
+      <div class="testimonial-stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <p class="testimonial-text">"The Whole Garlic pickle changed my life. I put it on everything — paratha, dal, even pasta. Pure magic in a jar. Can't imagine eating without it now."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">S</div>
+        <div class="author-info">
+          <h4>Sunita Rao</h4>
+          <span>Bengaluru · Verified Buyer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NEWSLETTER ===== -->
+<section class="section-pad newsletter-section">
+  <div class="section-header">
+    <div class="section-eyebrow">Stay in the Loop</div>
+    <h2 class="section-title">Get Seasonal <em>Recipes & Offers</em></h2>
+    <p class="section-subtitle">Join the Achaar House family — be the first to know about new flavours, limited batches & exclusive discounts.</p>
+  </div>
+  <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+    <input type="email" class="newsletter-input" placeholder="Your email address" id="newsletterEmail" required />
+    <button type="submit" class="btn-primary">Subscribe →</button>
+  </form>
+  <p style="margin-top:16px; font-size:0.78rem; color:var(--text-muted);">No spam. Unsubscribe anytime. We promise.</p>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-logo">
+        <div class="footer-brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#F8F1E9" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 8v14h8v-6h4v6h8V8L12 2z"/>
+          </svg>
+        </div>
+        <span class="footer-brand-name">Achaar House</span>
+      </div>
+      <p class="footer-brand-desc">Preserving India's finest pickle traditions since 1985. Handcrafted in Jodhpur with love, mustard oil, and time-honoured recipes.</p>
+      <div class="social-links">
+        <a href="#" class="social-link" aria-label="Instagram">📷</a>
+        <a href="#" class="social-link" aria-label="Facebook">📘</a>
+        <a href="#" class="social-link" aria-label="YouTube">▶️</a>
+        <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Catalog</h4>
+      <ul class="footer-links">
+        <li><a href="catalog.html">All Pickles</a></li>
+        <li><a href="catalog.html">Fruit Pickles</a></li>
+        <li><a href="catalog.html">Chilli Pickles</a></li>
+        <li><a href="catalog.html">Vegetable Pickles</a></li>
+        <li><a href="catalog.html">Gift Hampers</a></li>
+        <li><a href="catalog.html">New Arrivals</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul class="footer-links">
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="about.html">Heritage</a></li>
+        <li><a href="contact.html">Wholesale</a></li>
+        <li><a href="contact.html">Press</a></li>
+        <li><a href="contact.html">Careers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul class="footer-links">
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Return Policy</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Track Order</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Achaar House. All rights reserved. Made with ❤️ in Jodhpur.</span>
+    <div style="display:flex; gap:20px;">
+      <a href="#" style="color:rgba(255,255,255,0.4); transition:color 0.3s;" onmouseover="this.style.color='rgba(255,255,255,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Privacy Policy</a>
+      <a href="#" style="color:rgba(255,255,255,0.4); transition:color 0.3s;" onmouseover="this.style.color='rgba(255,255,255,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Terms of Use</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // --- Navbar scroll effect ---
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // --- Hero bg parallax / load ---
+  const heroBg = document.getElementById('heroBg');
+  heroBg.style.backgroundImage = "url('images/hero_banner.jpg')";
+  setTimeout(() => heroBg.classList.add('loaded'), 100);
+
+  // --- Mobile Nav ---
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  const mobileClose = document.getElementById('mobileClose');
+  hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
+  mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+
+
+
+  // --- Newsletter ---
+  function handleNewsletter(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.textContent = '✓ Subscribed!';
+    btn.style.background = 'var(--green-herb)';
+    setTimeout(() => {
+      btn.textContent = 'Subscribe →';
+      btn.style.background = '';
+      document.getElementById('newsletterEmail').value = '';
+    }, 2500);
+  }
+
+  // --- Scroll animations ---
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
